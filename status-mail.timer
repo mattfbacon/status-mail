@@ -1,0 +1,9 @@
+[Unit]
+Description=Regularly check system status
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=1m
+
+[Install]
+WantedBy=timers.target

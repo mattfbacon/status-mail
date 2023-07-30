@@ -1,0 +1,21 @@
+[Unit]
+Description=Report status to different outputs.
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/status-mail
+ExecStart=/opt/status-mail/status-mail --output mail
+
+User=status-mail
+Group=status-mail
+# written files should be group-writable, so anyone in the `status-mail` group retains access.
+UMask=0002
+
+PrivateDevices=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectSystem=full
+RestrictSUIDSGID=true
+
+# no [Install] section; triggered by timer
