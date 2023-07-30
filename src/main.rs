@@ -158,6 +158,7 @@ macro_rules! tests {
 
 			match $args.output {
 				Output::Mail => {
+					eprintln!("reporting via mail ({critical_count} critical, {warning_count} warnings, {nominal_count} nominal)");
 					if let Err(error) = send_mail("matt@felle.nz", &message) {
 						eprintln!("error sending mail: {error}");
 					}
@@ -166,6 +167,8 @@ macro_rules! tests {
 					print!("{message}");
 				}
 			}
+		} else {
+			eprintln!("everything is nominal!");
 		}
 	};
 }
